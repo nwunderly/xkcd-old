@@ -1,5 +1,5 @@
 const DISCORD_NACL_PUBLIC_KEY =
-  'CHANGE ME'
+  'c75489dd2eb63251723813c8c8c830c5b6b46ab8c84fccb3c094ce3c6390f937'
 const nacl = require('tweetnacl')
 
 addEventListener('fetch', event => {
@@ -34,15 +34,17 @@ async function checkSecurityHeaders(request, body) {
 }
 
 async function respondToInteraction(request) {
-  if (request.type === 1) return new Response(JSON.stringify({ type: 1 }))
-  else {
+  if (request.type === 1) {
+    return new Response(
+    JSON.stringify({ type: 1 }), { headers: { 'Content-Type': 'application/json' } })
+  } else {
     return new Response(
       JSON.stringify({
         type: 4,
         data: {
           content: 'Hello from Cloudflare Workers!',
-        },
-      }),
+        }}), 
+        { headers: { 'Content-Type': 'application/json' } }
     )
   }
 }
