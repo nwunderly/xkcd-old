@@ -7,10 +7,14 @@ addEventListener('fetch', event => {
 })
 
 async function handleRequest(request) {
-  if (request.method !== 'POST')
+  if (request.method === 'GET') {
+    return Response.redirect('https://github.com/nwunderly/xkcd')
+  }
+  if (request.method !== 'POST') {
     return new Response('Method not allowed', {
       status: 405,
     })
+  }
   const body = await request.text()
   const securityResponse = await checkSecurityHeaders(request, body)
   if (securityResponse && securityResponse instanceof Response)

@@ -2,8 +2,8 @@ name = "xkcd"
 type = "webpack"
 
 account_id = "479657b241702a97ceb297ec1f9709bb"
-workers_dev = false
-route = "xkcd.nwunder.com/api"
+workers_dev = true
+routes = ["xkcd.nwunder.com", "xkcd.nwunder.com/api"]
 zone_id = "c0867876ae5df74ae2f0e6dff8894762"
 
 webpack_config = "webpack.config.js"
